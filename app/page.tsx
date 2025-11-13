@@ -1,63 +1,81 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen p-8 pb-20 sm:p-20 bg-gradient-to-b from-blue-50 to-white">
+      <main className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4 text-blue-900">
+            Bidwell Brook Partnership
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <h2 className="text-2xl font-semibold mb-6 text-blue-700">
+            Water/River Observation Survey
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+            Welcome to the river observation survey app. This tool helps volunteers 
+            record observations of water and river interactions to understand drainage 
+            patterns and potential flooding issues.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <Link 
+            href="/volunteer"
+            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-blue-200 hover:border-blue-400"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="text-center">
+              <div className="text-5xl mb-4">👤</div>
+              <h3 className="text-xl font-semibold mb-2 text-blue-900">
+                Volunteer Registration
+              </h3>
+              <p className="text-gray-600">
+                Register as a volunteer observer
+              </p>
+            </div>
+          </Link>
+
+          <Link 
+            href="/locations"
+            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-green-200 hover:border-green-400"
           >
-            Documentation
-          </a>
+            <div className="text-center">
+              <div className="text-5xl mb-4">📍</div>
+              <h3 className="text-xl font-semibold mb-2 text-green-900">
+                Select Location
+              </h3>
+              <p className="text-gray-600">
+                Choose an observation point (1-20)
+              </p>
+            </div>
+          </Link>
+
+          <Link 
+            href="/observe"
+            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-purple-200 hover:border-purple-400"
+          >
+            <div className="text-center">
+              <div className="text-5xl mb-4">📝</div>
+              <h3 className="text-xl font-semibold mb-2 text-purple-900">
+                Record Observation
+              </h3>
+              <p className="text-gray-600">
+                Log your findings and evidence
+              </p>
+            </div>
+          </Link>
+        </div>
+
+        <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+          <h3 className="text-lg font-semibold mb-3 text-blue-900">
+            What to Look For:
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-gray-700">
+            <li>Erosion patterns (bare soil, gullies, washouts)</li>
+            <li>Sediment deposits (silt or debris accumulated)</li>
+            <li>Water staining on surfaces</li>
+            <li>Areas where water tends to pool</li>
+            <li>Active water flow during or after rainfall</li>
+          </ul>
         </div>
       </main>
     </div>
