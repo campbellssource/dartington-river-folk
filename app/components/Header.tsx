@@ -26,6 +26,12 @@ export default function Header() {
               Home
             </Link>
             <Link 
+              href="/map" 
+              className="hover:text-[var(--button-primary)] transition-colors"
+            >
+              Map
+            </Link>
+            <Link 
               href="/locations" 
               className="hover:text-[var(--button-primary)] transition-colors"
             >
@@ -74,6 +80,13 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
+              </Link>
+              <Link 
+                href="/map" 
+                className="py-2 border-b border-white/10 hover:text-[var(--button-primary)] transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Map
               </Link>
               <Link 
                 href="/locations" 

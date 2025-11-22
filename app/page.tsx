@@ -19,8 +19,9 @@ export default function Home() {
   const router = useRouter();
   const [showMap, setShowMap] = useState(false);
 
+  // Handle client-side mounting - this is intentional for SSR compatibility
   useEffect(() => {
-    // Only show map after component mounts (client-side)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowMap(true);
   }, []);
 
