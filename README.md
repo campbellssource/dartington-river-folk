@@ -85,6 +85,36 @@ npm run build
 npm start
 ```
 
+## Deployment to Vercel
+
+This application is optimized for deployment on Vercel's platform.
+
+### Quick Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/campbellssource/dartington-river-folk)
+
+### Manual Deployment
+
+1. Push your code to GitHub
+2. Import the repository in [Vercel Dashboard](https://vercel.com/new)
+3. Vercel will auto-detect Next.js and configure optimal settings
+4. Click "Deploy" - your app will be live in minutes!
+
+### Vercel CLI Deployment
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy to Vercel
+vercel
+
+# Deploy to production
+vercel --prod
+```
+
+For detailed deployment instructions, troubleshooting, and configuration options, see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
 ## Project Structure
 
 ```
@@ -112,7 +142,8 @@ npm start
 - **Framework**: Next.js 16.0.3 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Deployment**: Can be deployed to Vercel, Netlify, or any Node.js hosting
+- **Maps**: Leaflet with OpenStreetMap
+- **Deployment**: Optimized for Vercel (also supports Netlify or any Node.js hosting)
 
 ## Evidence Types to Look For
 
