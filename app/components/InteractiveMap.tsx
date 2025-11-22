@@ -73,13 +73,14 @@ export default function InteractiveMap({
   onHoverLocation,
 }: InteractiveMapProps) {
   const [isClient, setIsClient] = useState(false);
-  const [L, setL] = useState<any>(null);
+  const [L, setL] = useState<typeof import("leaflet") | null>(null);
 
   useEffect(() => {
     setIsClient(true);
     import("leaflet").then((leaflet) => {
       setL(leaflet.default);
       // Fix for default marker icons in Next.js
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (leaflet.default.Icon.Default.prototype as any)._getIconUrl;
       leaflet.default.Icon.Default.mergeOptions({
         iconRetinaUrl: "/leaflet/marker-icon-2x.png",

@@ -56,7 +56,7 @@ export default function Home() {
             Current Monitoring Focus: Land & Drainage Hotspots
           </h3>
           <p className="text-gray-700 mb-4">
-            We're currently gathering observations about water flow patterns, drainage issues, 
+            We&apos;re currently gathering observations about water flow patterns, drainage issues, 
             and land-water interactions across 20 key locations. Your observations help us 
             understand flooding risks and drainage patterns.
           </p>
@@ -77,7 +77,7 @@ export default function Home() {
             Future Monitoring Programs
           </h4>
           <p className="text-gray-600 text-sm">
-            As our monitoring community grows, we'll expand to include observations of aquatic 
+            As our monitoring community grows, we&apos;ll expand to include observations of aquatic 
             invertebrates, water quality indicators, turbidity measurements, and other ecological 
             parameters. Stay tuned for updates!
           </p>
