@@ -1,0 +1,3 @@
+- future testing involved invertibrates, 2ice per hyear.
+- locations of high turbidity. 
+- predictions of when we might need to do a turbitity. then alert to remind people to do it.

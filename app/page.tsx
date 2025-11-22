@@ -6,76 +6,81 @@ export default function Home() {
       <main className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 text-blue-900">
-            Bidwell Brook Partnership
+            Bidwell Monitors
           </h1>
-          <h2 className="text-2xl font-semibold mb-6 text-blue-700">
-            Water/River Observation Survey
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Welcome to the river observation survey app. This tool helps volunteers 
-            record observations of water and river interactions to understand drainage 
-            patterns and potential flooding issues.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+            A collaborative monitoring platform for volunteers observing and documenting 
+            environmental conditions across the Bidwell Brook catchment.
+          </p>
+          <p className="text-gray-500 max-w-2xl mx-auto mb-8">
+            Help us build a comprehensive picture of our local environment through systematic 
+            observation and data collection. Your contributions support research, conservation, 
+            and community understanding of the Bidwell Brook ecosystem.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <Link 
-            href="/volunteer"
-            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-blue-200 hover:border-blue-400"
-          >
-            <div className="text-center">
-              <div className="text-5xl mb-4">👤</div>
-              <h3 className="text-xl font-semibold mb-2 text-blue-900">
-                Volunteer Registration
-              </h3>
-              <p className="text-gray-600">
-                Register as a volunteer observer
-              </p>
-            </div>
-          </Link>
-
+        <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
           <Link 
             href="/locations"
-            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-green-200 hover:border-green-400"
+            className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-10 rounded-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-2 border-blue-500"
           >
             <div className="text-center">
-              <div className="text-5xl mb-4">📍</div>
-              <h3 className="text-xl font-semibold mb-2 text-green-900">
-                Select Location
+              <div className="text-6xl mb-4">📝</div>
+              <h3 className="text-2xl font-bold mb-3">
+                Record an Observation
               </h3>
-              <p className="text-gray-600">
-                Choose an observation point (1-20)
+              <p className="text-blue-100">
+                Select a monitoring location and document your findings
               </p>
             </div>
           </Link>
 
           <Link 
-            href="/observe"
-            className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-2 border-purple-200 hover:border-purple-400"
+            href="/volunteer"
+            className="bg-white p-10 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 border-2 border-blue-200 hover:border-blue-400"
           >
             <div className="text-center">
-              <div className="text-5xl mb-4">📝</div>
-              <h3 className="text-xl font-semibold mb-2 text-purple-900">
-                Record Observation
+              <div className="text-6xl mb-4">👤</div>
+              <h3 className="text-2xl font-bold mb-3 text-blue-900">
+                Register as Monitor
               </h3>
               <p className="text-gray-600">
-                Log your findings and evidence
+                Join our community of volunteer observers
               </p>
             </div>
           </Link>
         </div>
 
-        <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-          <h3 className="text-lg font-semibold mb-3 text-blue-900">
-            What to Look For:
+        <div className="bg-blue-50 p-8 rounded-lg border border-blue-200 mb-8">
+          <h3 className="text-xl font-semibold mb-4 text-blue-900">
+            Current Monitoring Focus: Land & Drainage Hotspots
           </h3>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>Erosion patterns (bare soil, gullies, washouts)</li>
-            <li>Sediment deposits (silt or debris accumulated)</li>
-            <li>Water staining on surfaces</li>
-            <li>Areas where water tends to pool</li>
-            <li>Active water flow during or after rainfall</li>
-          </ul>
+          <p className="text-gray-700 mb-4">
+            We're currently gathering observations about water flow patterns, drainage issues, 
+            and land-water interactions across 20 key locations. Your observations help us 
+            understand flooding risks and drainage patterns.
+          </p>
+          <div className="bg-white p-4 rounded border border-blue-100">
+            <h4 className="font-semibold text-blue-800 mb-2">What to observe:</h4>
+            <ul className="list-disc list-inside space-y-1 text-gray-700">
+              <li>Erosion patterns and soil movement</li>
+              <li>Sediment deposits and accumulation</li>
+              <li>Water staining and flow evidence</li>
+              <li>Areas where water pools or collects</li>
+              <li>Active water flow during or after rainfall</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
+          <h4 className="text-lg font-semibold mb-2 text-green-900">
+            Future Monitoring Programs
+          </h4>
+          <p className="text-gray-600 text-sm">
+            As our monitoring community grows, we'll expand to include observations of aquatic 
+            invertebrates, water quality indicators, turbidity measurements, and other ecological 
+            parameters. Stay tuned for updates!
+          </p>
         </div>
       </main>
     </div>

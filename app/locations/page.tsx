@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { locations } from "../data/locations";
+import { useState } from "react";
+import InteractiveMap from "../components/InteractiveMap";
 
 export default function LocationsPage() {
   const router = useRouter();
-  const [selectedLocation, setSelectedLocation] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [hoveredLocation, setHoveredLocation] = useState<number | null>(null);
 
   const filteredLocations = locations.filter(location =>
     location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -17,18 +18,13 @@ export default function LocationsPage() {
   );
 
   const handleSelectLocation = (locationId: number) => {
-    setSelectedLocation(locationId);
-  };
-
-  const handleProceed = () => {
-    if (selectedLocation) {
-      router.push(`/observe?location=${selectedLocation}`);
-    }
+    // Directly navigate to observe page with selected location
+    router.push(`/observe?location=${locationId}`);
   };
 
   return (
     <div className="min-h-screen p-8 pb-20 sm:p-20 bg-gradient-to-b from-green-50 to-white">
-      <main className="max-w-6xl mx-auto">
+      <main className="max-w-7xl mx-auto">
         <div className="mb-6">
           <Link href="/" className="text-green-600 hover:text-green-800 font-semibold">
             ← Back to Home
@@ -40,10 +36,19 @@ export default function LocationsPage() {
             Select Observation Location
           </h1>
           <p className="text-gray-600 mb-6">
-            Choose one of the 20 observation points to record your findings. Each location 
-            has specific questions to help guide your observations.
+            Choose a monitoring location to record your observations. Click any location on the map or in the list below.
           </p>
 
+          {/* Interactive Map */}
+          <div className="mb-8">
+            <InteractiveMap 
+              onLocationSelect={handleSelectLocation}
+              hoveredLocation={hoveredLocation}
+              onHoverLocation={setHoveredLocation}
+            />
+          </div>
+
+          {/* Search and List */}
           <div className="mb-6">
             <input
               type="text"
@@ -54,55 +59,29 @@ export default function LocationsPage() {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 max-h-[500px] overflow-y-auto p-2">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 max-h-[400px] overflow-y-auto p-2">
             {filteredLocations.map((location) => (
               <button
                 key={location.id}
                 onClick={() => handleSelectLocation(location.id)}
+                onMouseEnter={() => setHoveredLocation(location.id)}
+                onMouseLeave={() => setHoveredLocation(null)}
                 className={`text-left p-4 rounded-lg border-2 transition-all ${
-                  selectedLocation === location.id
-                    ? "border-green-500 bg-green-50 shadow-md"
-                    : "border-gray-200 hover:border-green-300 hover:shadow"
+                  hoveredLocation === location.id
+                    ? "border-blue-500 bg-blue-50 shadow-md scale-105"
+                    : "border-gray-200 hover:border-green-500 hover:bg-green-50 hover:shadow-md"
                 }`}
               >
                 <div className="flex items-center mb-2">
                   <span className="text-2xl font-bold text-green-700 mr-2">
                     {location.id}
                   </span>
-                  {selectedLocation === location.id && (
-                    <span className="text-green-600 text-xl">✓</span>
-                  )}
                 </div>
                 <p className="text-sm text-gray-600 line-clamp-3">
                   {location.question}
                 </p>
               </button>
             ))}
-          </div>
-
-          {selectedLocation && (
-            <div className="bg-green-50 p-6 rounded-lg border border-green-200 mb-4">
-              <h3 className="font-semibold text-green-900 mb-2">
-                Selected Location {selectedLocation}:
-              </h3>
-              <p className="text-gray-700">
-                {locations.find(l => l.id === selectedLocation)?.question}
-              </p>
-            </div>
-          )}
-
-          <div className="flex gap-4">
-            <button
-              onClick={handleProceed}
-              disabled={!selectedLocation}
-              className={`flex-1 py-3 px-6 rounded-lg font-semibold text-lg transition-colors ${
-                selectedLocation
-                  ? "bg-green-600 text-white hover:bg-green-700"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
-              }`}
-            >
-              Proceed to Record Observation →
-            </button>
           </div>
         </div>
 
