@@ -67,7 +67,18 @@ export default function LoginPage() {
   const handleResendLink = () => {
     setCanResend(false);
     setMagicLinkSent(false);
-    handleMagicLinkSubmit(new Event("submit") as any);
+    // Manually trigger the same logic as form submission
+    setErrors({});
+    if (!validateEmail(email)) {
+      setErrors({ email: "Please enter a valid email address" });
+      return;
+    }
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setMagicLinkSent(true);
+      setTimeout(() => setCanResend(true), 60000);
+    }, 1000);
   };
 
   const handleChangeEmail = () => {

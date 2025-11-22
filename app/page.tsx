@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 
 // Dynamically import InteractiveMap to avoid SSR issues
@@ -15,6 +16,7 @@ const InteractiveMap = dynamic(() => import("./components/InteractiveMap"), {
 });
 
 export default function Home() {
+  const router = useRouter();
   const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
@@ -137,7 +139,7 @@ export default function Home() {
             <div className="mb-6">
               {showMap && (
                 <InteractiveMap 
-                  onLocationSelect={(id) => window.location.href = `/observe?location=${id}`}
+                  onLocationSelect={(id) => router.push(`/observe?location=${id}`)}
                   hoveredLocation={null}
                   onHoverLocation={() => {}}
                 />
