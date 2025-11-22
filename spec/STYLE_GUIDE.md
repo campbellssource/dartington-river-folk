@@ -7,7 +7,8 @@
 
 ### Primary Colors
 ```css
---primary-accent: #9B6239;        /* Dark terracotta brown - primary accent (WCAG AA compliant) */
+--primary-accent: #9B6239;        /* Dark terracotta brown - for links/accents on light backgrounds (WCAG AA: 5.00:1 on white) */
+--primary-accent-light: #E1AE86;  /* Light terracotta - for gradients and decorative elements */
 --primary-light: #D8C4B6;         /* Light beige - secondary accent */
 --primary-dark: #142E2C;          /* Deep teal/forest green - body text */
 --primary-navy: #00102E;          /* Deep navy blue - headings/dark elements */

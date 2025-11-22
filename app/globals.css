@@ -8,7 +8,8 @@
 
 :root {
   /* Primary Colors */
-  --primary-accent: #9B6239;        /* Updated for WCAG AA compliance (5.00:1 on white) */
+  --primary-accent: #9B6239;        /* Dark terracotta for links/accents on light backgrounds (5.00:1 on white) */
+  --primary-accent-light: #E1AE86;  /* Light terracotta for gradients and dark bg contexts */
   --primary-light: #D8C4B6;
   --primary-dark: #142E2C;
   --primary-navy: #00102E;

@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[var(--primary-accent)] to-[var(--primary-light)] text-white py-20 md:py-32">
+      <section className="relative bg-gradient-to-br from-[var(--primary-accent-light)] to-[var(--primary-light)] text-white py-20 md:py-32">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -209,7 +209,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-16 bg-gradient-to-r from-[var(--primary-accent)] to-[var(--primary-light)] text-white">
+      <section className="py-16 bg-gradient-to-r from-[var(--primary-accent-light)] to-[var(--primary-light)] text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Make a Difference?
