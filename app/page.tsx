@@ -9,8 +9,8 @@ import dynamic from "next/dynamic";
 const InteractiveMap = dynamic(() => import("./components/InteractiveMap"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[400px] bg-gray-100 flex items-center justify-center">
-      <p className="text-gray-500">Loading map...</p>
+    <div className="w-full h-[400px] bg-[var(--secondary-light-grey)] flex items-center justify-center">
+      <p className="text-[var(--secondary-grey)]">Loading map...</p>
     </div>
   ),
 });

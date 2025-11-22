@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 
+// Constants
+const MAGIC_LINK_RESEND_DELAY_MS = 60000; // 60 seconds
+
 export default function LoginPage() {
   const [authMethod, setAuthMethod] = useState<"magic" | "password">("magic");
   const [email, setEmail] = useState("");
@@ -33,8 +36,8 @@ export default function LoginPage() {
     setTimeout(() => {
       setLoading(false);
       setMagicLinkSent(true);
-      // Enable resend after 60 seconds
-      setTimeout(() => setCanResend(true), 60000);
+      // Enable resend after delay
+      setTimeout(() => setCanResend(true), MAGIC_LINK_RESEND_DELAY_MS);
     }, 1000);
   };
 
@@ -77,7 +80,7 @@ export default function LoginPage() {
     setTimeout(() => {
       setLoading(false);
       setMagicLinkSent(true);
-      setTimeout(() => setCanResend(true), 60000);
+      setTimeout(() => setCanResend(true), MAGIC_LINK_RESEND_DELAY_MS);
     }, 1000);
   };
 
