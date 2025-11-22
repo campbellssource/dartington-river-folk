@@ -44,10 +44,10 @@ export default function Header() {
               About
             </Link>
             <Link 
-              href="/login" 
+              href="/account" 
               className="px-4 py-2 bg-[var(--button-primary)] text-[var(--button-text)] hover:bg-[var(--button-primary-hover)] transition-colors uppercase text-sm"
             >
-              Login
+              My Account
             </Link>
           </nav>
 
@@ -97,11 +97,11 @@ export default function Header() {
                 About
               </Link>
               <Link 
-                href="/login" 
+                href="/account" 
                 className="mt-2 py-2 text-center bg-[var(--button-primary)] text-[var(--button-text)] hover:bg-[var(--button-primary-hover)] transition-colors uppercase text-sm"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Login
+                My Account
               </Link>
             </div>
           </nav>
