@@ -206,7 +206,7 @@ Example questions:
 ### Media Upload Area
 
 **Heading**: "Upload Photos or Videos"
-**Description**: "Visual evidence is extremely valuable. Upload photos/videos showing water flow, drainage patterns, or other evidence."
+**Description**: "Visual evidence is extremely valuable. Upload photos/videos showing water flow, drainage patterns, or other evidence. Accepted formats: JPG, PNG, HEIC, MP4, MOV. Max size: 10MB per photo, 100MB per video."
 
 **Upload Component**
 - Drag-and-drop area (large, visually clear)

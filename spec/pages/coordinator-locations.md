@@ -356,6 +356,8 @@ When clicking "View details" (not editing)
 
 **CSV Template Format:**
 ```
+# Format: number(integer),name(text),latitude(decimal),longitude(decimal),researchQuestion(text),description(text),status(active|inactive|draft)
+# Example row:
 number,name,latitude,longitude,researchQuestion,description,status
 1,Location Name,50.446551,-3.709278,"Research question here","Description",active
 ```
