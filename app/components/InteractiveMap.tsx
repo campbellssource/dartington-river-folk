@@ -80,8 +80,11 @@ export default function InteractiveMap({
     import("leaflet").then((leaflet) => {
       setL(leaflet.default);
       // Fix for default marker icons in Next.js
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      delete (leaflet.default.Icon.Default.prototype as any)._getIconUrl;
+      const iconDefault = leaflet.default.Icon.Default.prototype;
+      if ('_getIconUrl' in iconDefault) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        delete (iconDefault as any)._getIconUrl;
+      }
       leaflet.default.Icon.Default.mergeOptions({
         iconRetinaUrl: "/leaflet/marker-icon-2x.png",
         iconUrl: "/leaflet/marker-icon.png",
