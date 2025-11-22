@@ -7,7 +7,7 @@
 
 ### Primary Colors
 ```css
---primary-accent: #E1AE86;        /* Warm terracotta/tan - primary accent */
+--primary-accent: #9B6239;        /* Dark terracotta brown - primary accent (WCAG AA compliant) */
 --primary-light: #D8C4B6;         /* Light beige - secondary accent */
 --primary-dark: #142E2C;          /* Deep teal/forest green - body text */
 --primary-navy: #00102E;          /* Deep navy blue - headings/dark elements */
@@ -33,8 +33,8 @@
 --button-primary: #FFD00A;        /* Bright yellow - primary buttons */
 --button-primary-hover: rgba(255,208,10,0.78); /* Yellow hover state */
 --button-text: #00102E;           /* Dark navy - button text */
---link-color: #E1AE86;            /* Terracotta - links */
---link-hover: #D8C4B6;            /* Light beige - link hover */
+--link-color: #9B6239;            /* Dark terracotta brown - links (WCAG AA compliant: 5.00:1) */
+--link-hover: #8B5528;            /* Darker warm brown - link hover (WCAG AA compliant: 6.13:1) */
 ```
 
 ### Overlay & Transparency
