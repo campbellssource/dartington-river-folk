@@ -15,7 +15,7 @@ export default function AboutPage() {
                 Bidwell Brook Partnership
               </h2>
               <p className="mb-4">
-                The Dartington River Folk project is an initiative of the Bidwell Brook Partnership, 
+                The Bidwell monitors project is an initiative of the Bidwell Brook Partnership, 
                 bringing together volunteers to observe and document water drainage patterns in the 
                 Dartington and Totnes area of Devon.
               </p>

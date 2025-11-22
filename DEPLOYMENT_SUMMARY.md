@@ -1,4 +1,4 @@
-# Deployment Summary - Dartington River Folk
+# Deployment Summary - Bidwell monitors
 
 ## 🎉 Your Application is Ready for Vercel!
 
@@ -54,7 +54,7 @@ Three detailed guides have been created:
 1. Go to **[vercel.com](https://vercel.com)** and sign in
 2. Click **"Add New..."** → **"Project"**
 3. Select **"Import Git Repository"**
-4. Choose `campbellssource/dartington-river-folk`
+4. Choose `campbellssource/dartington-river-folk` (branded as "Bidwell monitors")
 5. Click **"Deploy"**
 6. **Done!** Your app will be live in 2-3 minutes
 
@@ -64,7 +64,7 @@ Use the deploy button in your README.md - just click and follow prompts!
 ### Method 3: Vercel CLI
 ```bash
 npm install -g vercel
-cd /path/to/dartington-river-folk
+cd /path/to/dartington-river-folk  # App branded as "Bidwell monitors"
 vercel login
 vercel --prod
 ```
@@ -184,7 +184,7 @@ Follow the roadmap in `IMPLEMENTATION_ROADMAP.md`:
 ### Custom Domain (Optional)
 After deployment, add a custom domain:
 1. Go to Project Settings → Domains
-2. Add your domain (e.g., `dartington-river-folk.org`)
+2. Add your domain (e.g., `monitors.BidwellBrook.org`)
 3. Configure DNS as instructed
 4. SSL certificate auto-generated
 
@@ -237,7 +237,7 @@ A: The form UI is complete, but data isn't saved yet (no database). Users can te
 
 ## 🎊 Congratulations!
 
-Your Dartington River Folk application is production-ready and configured for Vercel!
+Your Bidwell monitors application is production-ready and configured for Vercel!
 
 **What you have:**
 - ✅ Professional, responsive web application

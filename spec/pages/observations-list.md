@@ -326,7 +326,7 @@ Full-width cards, stacked vertically:
 ## SEO Requirements
 
 ### Meta Tags
-- Title: "Observations - Dartington River Folk"
+- Title: "Observations - Bidwell monitors"
 - Description: "Browse water drainage observations from volunteer monitors in Dartington and Totnes."
 
 ### Structured Data

@@ -1,4 +1,4 @@
-# Dartington River Folk - Style Guide Specification
+# Bidwell monitors - Style Guide Specification
 
 > Based on reverse engineering of https://bidwellbrook.org
 > Generated: 13 November 2025

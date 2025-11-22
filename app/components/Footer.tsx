@@ -119,7 +119,7 @@ export default function Footer() {
       <div className="footer-credits border-t border-white/10">
         <div className="container mx-auto px-4 py-4">
           <p className="text-center text-sm">
-            © {new Date().getFullYear()} Bidwell Brook Partnership. Built with ❤️ for the Dartington River Folk.
+            © {new Date().getFullYear()} Bidwell Brook Partnership. Built with ❤️ for the Bidwell monitors.
           </p>
         </div>
       </div>

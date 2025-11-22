@@ -1,6 +1,6 @@
 # Implementation Roadmap
 
-This document provides a comprehensive roadmap for implementing the full Dartington River Folk application based on the specifications in the `/spec` directory.
+This document provides a comprehensive roadmap for implementing the full Bidwell monitors application based on the specifications in the `/spec` directory.
 
 ## Current Status
 
@@ -45,7 +45,7 @@ The application is ready for immediate deployment to Vercel:
 1. **Via Vercel Dashboard** (Recommended)
    - Go to [vercel.com](https://vercel.com) and sign in
    - Click "Add New..." → "Project"
-   - Import `campbellssource/dartington-river-folk` repository
+   - Import `campbellssource/dartington-river-folk` repository (branded as "Bidwell monitors")
    - Click "Deploy" (Vercel auto-detects Next.js settings)
    - Your app will be live in ~2-3 minutes!
 
@@ -58,7 +58,7 @@ The application is ready for immediate deployment to Vercel:
    ```bash
    npm install -g vercel
    vercel login
-   cd /path/to/dartington-river-folk
+   cd /path/to/dartington-river-folk  # App branded as "Bidwell monitors"
    vercel --prod
    ```
 
