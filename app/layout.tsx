@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "River Observation App",
-  description: "Bidwell Brook Partnership Water/River Observation Survey",
+  title: "Dartington River Folk - Volunteer Water Monitoring",
+  description: "Join volunteer monitors observing water drainage patterns in Dartington and Totnes. Help us understand flooding and protect our community.",
+  keywords: "river monitoring, water observation, Dartington, Totnes, volunteer, flooding, drainage",
+  openGraph: {
+    title: "Dartington River Folk - Volunteer Water Monitoring",
+    description: "Join volunteer monitors observing water drainage patterns in Dartington and Totnes.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -13,8 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" rel="stylesheet" />
+      </head>
       <body className="antialiased">
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
