@@ -64,7 +64,7 @@ After clicking "Send Login Link":
 6. Change email: "[Use different email]" button to reset form
 
 ### Magic Link Email Content
-- Subject: "Your Login Link - Dartington River Folk"
+- Subject: "Your Login Link - Bidwell monitors"
 - Body: "Click the button below to log in to your account. This link expires in 15 minutes."
 - CTA Button: "LOG IN TO MY ACCOUNT"
 - Footer: "If you didn't request this login, ignore this email."

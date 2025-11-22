@@ -13,7 +13,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <h1 className="text-xl md:text-2xl font-bold">
-              Dartington River Folk
+              Bidwell monitors
             </h1>
           </Link>
 

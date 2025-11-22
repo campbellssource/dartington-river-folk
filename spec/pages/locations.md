@@ -317,7 +317,7 @@ When "View Details" clicked from map or card:
 ## SEO Requirements
 
 ### Meta Tags
-- Title: "Observation Locations - Dartington River Folk"
+- Title: "Observation Locations - Bidwell monitors"
 - Description: "Explore 20 water monitoring locations in Dartington and Totnes. Learn about research questions and make observations."
 
 ### Structured Data

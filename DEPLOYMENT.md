@@ -1,6 +1,6 @@
 # Deployment Guide - Vercel Hosting
 
-This guide provides step-by-step instructions for deploying the Dartington River Folk application to Vercel.
+This guide provides step-by-step instructions for deploying the Bidwell monitors application to Vercel.
 
 ## Prerequisites
 
@@ -64,6 +64,7 @@ Click the button below to deploy directly to Vercel:
 3. **Deploy from Project Directory**
    ```bash
    cd /path/to/dartington-river-folk
+   # Note: Application is branded as "Bidwell monitors"
    vercel
    ```
 
@@ -105,7 +106,7 @@ The `vercel.json` file is already configured with optimal settings:
 
 1. **Add Domain in Vercel Dashboard**
    - Go to Project Settings → Domains
-   - Enter your domain (e.g., `dartington-river-folk.org`)
+   - Enter your domain (e.g., `monitors.BidwellBrook.org`)
    - Follow DNS configuration instructions
 
 2. **DNS Configuration**

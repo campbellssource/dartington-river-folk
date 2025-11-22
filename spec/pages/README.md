@@ -1,6 +1,6 @@
 # Page Specifications Overview
 
-This directory contains comprehensive specifications for all pages in the Dartington River Folk observation app.
+This directory contains comprehensive specifications for all pages in the Bidwell monitors observation app.
 
 ## Purpose
 

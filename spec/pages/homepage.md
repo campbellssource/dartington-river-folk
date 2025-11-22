@@ -1,7 +1,7 @@
 # Homepage Specification
 
 ## Purpose
-The homepage serves as the primary landing page for the Dartington River Folk observation app. It introduces visitors to the current study, explains the purpose of the project, and guides them to take action (register or make an observation).
+The homepage serves as the primary landing page for the Bidwell monitors observation app. It introduces visitors to the current study, explains the purpose of the project, and guides them to take action (register or make an observation).
 
 ## Target Audience
 - Potential volunteer monitors from bidwellbrook.org
@@ -11,7 +11,7 @@ The homepage serves as the primary landing page for the Dartington River Folk ob
 ## Layout & Structure
 
 ### Header
-- Site logo/branding: "Dartington River Folk" or "Bidwell Brook Partnership"
+- Site logo/branding: "Bidwell monitors" (Bidwell Brook Partnership)
 - Navigation menu:
   - Home (current)
   - Make Observation (requires login)
@@ -241,7 +241,7 @@ The homepage serves as the primary landing page for the Dartington River Folk ob
 ## SEO Requirements
 
 ### Meta Tags
-- Title: "Dartington River Folk - Volunteer Water Monitoring"
+- Title: "Bidwell monitors - Volunteer Water Monitoring"
 - Description: "Join volunteer monitors observing water drainage patterns in Dartington and Totnes. Help us understand flooding and protect our community."
 - Keywords: river monitoring, water observation, Dartington, Totnes, volunteer, flooding, drainage
 

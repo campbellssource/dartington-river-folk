@@ -168,7 +168,7 @@ If registration fails:
 ### Email Verification Flow
 
 **Verification Email Content:**
-- Subject: "Verify Your Email - Dartington River Folk"
+- Subject: "Verify Your Email - Bidwell monitors"
 - Greeting: "Hi [Name],"
 - Body: "Thanks for joining as a volunteer monitor! Click the button below to verify your email address and complete your registration."
 - CTA Button: "VERIFY EMAIL ADDRESS"
@@ -177,7 +177,7 @@ If registration fails:
 
 **Verification Success Page** (`/verify-email?token=...`)
 - Success message: "Email Verified Successfully!"
-- Welcome message: "Welcome to Dartington River Folk, [Name]!"
+- Welcome message: "Welcome to Bidwell monitors, [Name]!"
 - Next steps:
   - "Explore observation locations"
   - "Make your first observation"

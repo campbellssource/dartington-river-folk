@@ -56,6 +56,7 @@ The app includes all 20 observation points from the BBP Survey Briefing Note, in
 ```bash
 git clone https://github.com/campbellssource/dartington-river-folk.git
 cd dartington-river-folk
+# Note: The app is now branded as "Bidwell monitors" and will be hosted at monitors.BidwellBrook.org
 ```
 
 2. Install dependencies:
@@ -188,3 +189,7 @@ For technical issues or questions about the survey, please contact the project t
 ---
 
 *Built with ❤️ for the Bidwell Brook Partnership*
+
+## Application Branding
+
+This application is branded as **Bidwell monitors** and is designed to be hosted at **monitors.BidwellBrook.org**.
