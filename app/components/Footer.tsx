@@ -15,7 +15,7 @@ export default function Footer() {
               href="https://bidwellbrook.org" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm hover:text-[var(--primary-accent)] transition-colors"
+              className="text-sm hover:text-[var(--link-color-dark-bg)] transition-colors"
             >
               Visit Bidwell Brook Partnership →
             </a>
@@ -28,7 +28,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/observe" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   Make Observation
                 </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/observations" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   View Observations
                 </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/locations" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   Observation Locations
                 </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/signup" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   Become a Monitor
                 </Link>
@@ -67,7 +67,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/about" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   About the Project
                 </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/privacy" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/terms" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   Terms of Service
                 </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
               <li>
                 <Link 
                   href="/help" 
-                  className="text-sm text-white/70 hover:text-[var(--primary-accent)] transition-colors"
+                  className="text-sm text-white/70 hover:text-[var(--link-color-dark-bg)] transition-colors"
                 >
                   Help & Support
                 </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
             </p>
             <a 
               href="mailto:info@bidwellbrook.org" 
-              className="text-sm hover:text-[var(--primary-accent)] transition-colors"
+              className="text-sm hover:text-[var(--link-color-dark-bg)] transition-colors"
             >
               info@bidwellbrook.org
             </a>

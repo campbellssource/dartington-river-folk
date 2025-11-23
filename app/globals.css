@@ -8,7 +8,8 @@
 
 :root {
   /* Primary Colors */
-  --primary-accent: #E1AE86;
+  --primary-accent: #9B6239;        /* Dark terracotta for links/accents on light backgrounds (5.00:1 on white) */
+  --primary-accent-light: #E1AE86;  /* Light terracotta for gradients and dark bg contexts */
   --primary-light: #D8C4B6;
   --primary-dark: #142E2C;
   --primary-navy: #00102E;
@@ -28,8 +29,9 @@
   --button-primary: #FFD00A;
   --button-primary-hover: rgba(255, 208, 10, 0.78);
   --button-text: #00102E;
-  --link-color: #E1AE86;
-  --link-hover: #D8C4B6;
+  --link-color: #9B6239;            /* Updated for WCAG AA compliance (5.00:1 on white) */
+  --link-hover: #8B5528;            /* Updated for WCAG AA compliance (6.13:1 on white) */
+  --link-color-dark-bg: #E1AE86;    /* For links on dark backgrounds (9.52:1 on navy) */
   
   /* Overlay & Transparency */
   --overlay-dark: rgba(0, 0, 0, 0.9);
@@ -455,7 +457,7 @@ footer a {
 }
 
 footer a:hover {
-  color: var(--primary-accent);
+  color: var(--link-color-dark-bg);
 }
 
 .footer-credits {

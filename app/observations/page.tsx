@@ -255,7 +255,7 @@ export default function ObservationsPage() {
           )}
 
           {/* Call to Action */}
-          <div className="mt-8 bg-gradient-to-r from-[var(--primary-accent)] to-[var(--primary-light)] text-white p-8 text-center">
+          <div className="mt-8 bg-gradient-to-r from-[var(--primary-accent-light)] to-[var(--primary-light)] text-white p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Want to Contribute?</h3>
             <p className="mb-6">
               Join our community of volunteer monitors and help us understand water drainage patterns.

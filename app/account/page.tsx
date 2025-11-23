@@ -187,7 +187,7 @@ export default function AccountPage() {
               </div>
 
               {/* Contribution Milestone */}
-              <div className="bg-gradient-to-br from-[var(--primary-accent)] to-[var(--primary-light)] text-white p-6">
+              <div className="bg-gradient-to-br from-[var(--primary-accent-light)] to-[var(--primary-light)] text-white p-6">
                 <h3 className="text-lg font-semibold mb-2">
                   Keep Contributing!
                 </h3>
