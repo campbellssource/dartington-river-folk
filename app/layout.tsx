@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "Bidwell monitors - Volunteer Water Monitoring",
+  title: "Bidwell Monitors - Volunteer Water Monitoring",
   description: "Join volunteer monitors observing water drainage patterns in Dartington and Totnes. Help us understand flooding and protect our community.",
   keywords: "river monitoring, water observation, Bidwell Brook, Dartington, Totnes, volunteer, flooding, drainage",
   openGraph: {

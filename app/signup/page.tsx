@@ -2,53 +2,23 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import PasswordStrengthIndicator from "../components/PasswordStrengthIndicator";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    confirmEmail: "",
-    authMethod: "magic" as "magic" | "password",
-    password: "",
-    confirmPassword: "",
-    organization: "",
     experience: "",
     gdprConsent: false,
     notificationPreference: true,
   });
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [passwordStrength, setPasswordStrength] = useState<"weak" | "medium" | "strong" | null>(null);
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
-  };
-
-  const validatePassword = (password: string) => {
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const isLongEnough = password.length >= 8;
-
-    if (isLongEnough && hasUpperCase && hasLowerCase && hasNumber) {
-      return { valid: true, strength: "strong" as const };
-    } else if (isLongEnough && ((hasUpperCase && hasLowerCase) || (hasNumber && (hasUpperCase || hasLowerCase)))) {
-      return { valid: true, strength: "medium" as const };
-    } else if (isLongEnough) {
-      return { valid: false, strength: "weak" as const };
-    }
-    return { valid: false, strength: null };
-  };
-
-  const handlePasswordChange = (password: string) => {
-    setFormData({ ...formData, password });
-    const result = validatePassword(password);
-    setPasswordStrength(result.strength);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -67,23 +37,6 @@ export default function SignupPage() {
       newErrors.email = "Please enter a valid email address";
     }
 
-    // Validate email confirmation
-    if (formData.email !== formData.confirmEmail) {
-      newErrors.confirmEmail = "Email addresses do not match";
-    }
-
-    // Validate password if password method selected
-    if (formData.authMethod === "password") {
-      const passwordResult = validatePassword(formData.password);
-      if (!passwordResult.valid || passwordResult.strength === "weak") {
-        newErrors.password = "Password must be at least 8 characters with uppercase, lowercase, and number";
-      }
-
-      if (formData.password !== formData.confirmPassword) {
-        newErrors.confirmPassword = "Passwords do not match";
-      }
-    }
-
     // Validate GDPR consent
     if (!formData.gdprConsent) {
       newErrors.gdprConsent = "You must agree to the terms and privacy policy";
@@ -95,11 +48,10 @@ export default function SignupPage() {
     }
 
     setLoading(true);
-    // Simulate API call
+    // Simulate API call to send magic link
     setTimeout(() => {
       setLoading(false);
-      // In a real app, this would create the account and redirect
-      alert("Registration functionality not yet implemented (frontend only)");
+      setMagicLinkSent(true);
     }, 1500);
   };
 
@@ -116,7 +68,7 @@ export default function SignupPage() {
               Join our community of observers helping to understand local water drainage patterns
             </p>
             <p className="text-sm text-[var(--secondary-grey)]">
-              Registration takes less than 2 minutes. We&apos;ll send you a verification email to get started.
+              Registration takes less than a minute. We&apos;ll send you a magic link to get started.
             </p>
             <p className="mt-4 text-sm">
               Already have an account?{" "}
@@ -128,274 +80,174 @@ export default function SignupPage() {
 
           {/* Registration Form Card */}
           <div className="bg-white shadow-lg p-8">
-            <form onSubmit={handleSubmit}>
-              {/* Personal Information Section */}
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-[var(--primary-navy)]">Personal Information</h2>
+            {magicLinkSent ? (
+              <div className="text-center py-8">
+                <div className="text-5xl mb-4">📧</div>
+                <h2 className="text-2xl font-semibold mb-4 text-[var(--primary-navy)]">
+                  Check Your Email
+                </h2>
+                <p className="text-[var(--primary-dark)] mb-4">
+                  We&apos;ve sent a magic link to <strong>{formData.email}</strong>
+                </p>
+                <p className="text-[var(--secondary-grey)] mb-6">
+                  Click the link in the email to complete your registration. 
+                  After logging in, you&apos;ll be encouraged to set a password for easier access in the future.
+                </p>
+                <div className="bg-[var(--secondary-light-grey)] p-4 text-sm text-[var(--secondary-grey)]">
+                  <p className="mb-2">
+                    <strong>Didn&apos;t receive the email?</strong>
+                  </p>
+                  <ul className="list-disc list-inside text-left">
+                    <li>Check your spam/junk folder</li>
+                    <li>Make sure you entered the correct email address</li>
+                    <li>Wait a few minutes and check again</li>
+                  </ul>
+                </div>
+                <button
+                  onClick={() => setMagicLinkSent(false)}
+                  className="mt-6 text-[var(--link-color)] hover:text-[var(--link-hover)] text-sm"
+                >
+                  ← Back to registration
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                {/* Personal Information Section */}
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold mb-4 text-[var(--primary-navy)]">Your Information</h2>
 
-                <div className="mb-4">
-                  <label htmlFor="fullName" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="John Smith"
-                    className={`w-full px-4 py-3 border ${
-                      errors.fullName ? "border-red-500" : "border-[var(--secondary-border-grey)]"
-                    } focus:border-[var(--primary-accent)] focus:outline-none transition-colors`}
-                  />
-                  {errors.fullName && (
-                    <p className="mt-2 text-sm text-red-500">{errors.fullName}</p>
-                  )}
+                  <div className="mb-4">
+                    <label htmlFor="fullName" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      placeholder="John Smith"
+                      className={`w-full px-4 py-3 border ${
+                        errors.fullName ? "border-red-500" : "border-[var(--secondary-border-grey)]"
+                      } focus:border-[var(--primary-accent)] focus:outline-none transition-colors`}
+                    />
+                    {errors.fullName && (
+                      <p className="mt-2 text-sm text-red-500">{errors.fullName}</p>
+                    )}
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="email" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="your.email@example.com"
+                      className={`w-full px-4 py-3 border ${
+                        errors.email ? "border-red-500" : "border-[var(--secondary-border-grey)]"
+                      } focus:border-[var(--primary-accent)] focus:outline-none transition-colors`}
+                      autoComplete="email"
+                    />
+                    {errors.email && (
+                      <p className="mt-2 text-sm text-red-500">{errors.email}</p>
+                    )}
+                    <p className="mt-1 text-xs text-[var(--secondary-grey)]">
+                      We&apos;ll send a magic link to this address to complete registration
+                    </p>
+                  </div>
+
+                  <div className="mb-4">
+                    <label htmlFor="experience" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
+                      Your preferred testing locations, Previous Experience with Water Monitoring or anything else you'd like to let us know (Optional)
+                    </label>
+                    <textarea
+                      id="experience"
+                      value={formData.experience}
+                      onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                      placeholder="Introduce yourself..."
+                      rows={3}
+                      className="w-full px-4 py-3 border border-[var(--secondary-border-grey)] focus:border-[var(--primary-accent)] focus:outline-none transition-colors"
+                    />
+                    <p className="mt-1 text-xs text-[var(--secondary-grey)]">
+                      This helps us understand our monitor community better
+                    </p>
+                  </div>
                 </div>
 
-                <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="your.email@example.com"
-                    className={`w-full px-4 py-3 border ${
-                      errors.email ? "border-red-500" : "border-[var(--secondary-border-grey)]"
-                    } focus:border-[var(--primary-accent)] focus:outline-none transition-colors`}
-                    autoComplete="email"
-                  />
-                  {errors.email && (
-                    <p className="mt-2 text-sm text-red-500">{errors.email}</p>
-                  )}
-                  <p className="mt-1 text-xs text-[var(--secondary-grey)]">
-                    We&apos;ll send a verification link to this address
+                {/* Consent Section */}
+                <div className="mb-8">
+                  <h2 className="text-xl font-semibold mb-4 text-[var(--primary-navy)]">Privacy & Notifications</h2>
+
+                  <div className="mb-4">
+                    <label className="flex items-start cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.gdprConsent}
+                        onChange={(e) => setFormData({ ...formData, gdprConsent: e.target.checked })}
+                        className="mt-1 mr-3"
+                      />
+                      <div className="text-sm">
+                        <span className="text-[var(--primary-dark)]">
+                          I agree to the{" "}
+                          <Link href="/terms" className="text-[var(--link-color)] hover:text-[var(--link-hover)]" target="_blank">
+                            Terms of Service
+                          </Link>{" "}
+                          and{" "}
+                          <Link href="/privacy" className="text-[var(--link-color)] hover:text-[var(--link-hover)]" target="_blank">
+                            Privacy Policy
+                          </Link>{" "}
+                          *
+                        </span>
+                      </div>
+                    </label>
+                    {errors.gdprConsent && (
+                      <p className="mt-2 text-sm text-red-500">{errors.gdprConsent}</p>
+                    )}
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="flex items-start cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={formData.notificationPreference}
+                        onChange={(e) => setFormData({ ...formData, notificationPreference: e.target.checked })}
+                        className="mt-1 mr-3"
+                      />
+                      <div className="text-sm text-[var(--primary-dark)]">
+                        I want to receive email notifications when observations are needed (you can change this later)
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-3 bg-[var(--button-primary)] text-[var(--button-text)] hover:bg-[var(--button-primary-hover)] transition-colors uppercase font-semibold disabled:opacity-50"
+                >
+                  {loading ? "Sending Magic Link..." : "Send Magic Link"}
+                </button>
+
+                {/* Info box about magic link */}
+                <div className="mt-6 bg-[var(--secondary-light-grey)] p-4 text-sm text-[var(--secondary-grey)]">
+                  <p className="mb-2">
+                    <strong className="text-[var(--primary-dark)]">How it works:</strong>
+                  </p>
+                  <ol className="list-decimal list-inside space-y-1">
+                    <li>Click &quot;Send Magic Link&quot; to create your account</li>
+                    <li>Check your email for a secure login link</li>
+                    <li>Click the link to log in automatically</li>
+                    <li>You&apos;ll be encouraged to set a password for future logins (optional)</li>
+                  </ol>
+                  <p className="mt-3 text-xs">
+                    You can always use a magic link to log in, even if you set a password later.
                   </p>
                 </div>
-
-                <div className="mb-4">
-                  <label htmlFor="confirmEmail" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                    Confirm Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="confirmEmail"
-                    value={formData.confirmEmail}
-                    onChange={(e) => setFormData({ ...formData, confirmEmail: e.target.value })}
-                    placeholder="your.email@example.com"
-                    className={`w-full px-4 py-3 border ${
-                      errors.confirmEmail ? "border-red-500" : "border-[var(--secondary-border-grey)]"
-                    } focus:border-[var(--primary-accent)] focus:outline-none transition-colors`}
-                    autoComplete="email"
-                  />
-                  {errors.confirmEmail && (
-                    <p className="mt-2 text-sm text-red-500">{errors.confirmEmail}</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Authentication Section */}
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-[var(--primary-navy)]">Authentication Method</h2>
-
-                <div className="mb-4">
-                  <label className="flex items-start mb-3 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="authMethod"
-                      checked={formData.authMethod === "magic"}
-                      onChange={() => setFormData({ ...formData, authMethod: "magic" })}
-                      className="mt-1 mr-3"
-                    />
-                    <div>
-                      <div className="font-semibold text-[var(--primary-dark)]">
-                        Email verification only (magic link)
-                      </div>
-                      <div className="text-sm text-[var(--secondary-grey)]">
-                        Log in using a secure link sent to your email each time
-                      </div>
-                    </div>
-                  </label>
-
-                  <label className="flex items-start cursor-pointer">
-                    <input
-                      type="radio"
-                      name="authMethod"
-                      checked={formData.authMethod === "password"}
-                      onChange={() => setFormData({ ...formData, authMethod: "password" })}
-                      className="mt-1 mr-3"
-                    />
-                    <div>
-                      <div className="font-semibold text-[var(--primary-dark)]">Password</div>
-                      <div className="text-sm text-[var(--secondary-grey)]">
-                        Create a password to log in
-                      </div>
-                    </div>
-                  </label>
-                </div>
-
-                {formData.authMethod === "password" && (
-                  <>
-                    <div className="mb-4">
-                      <label htmlFor="password" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                        Create Password *
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          id="password"
-                          value={formData.password}
-                          onChange={(e) => handlePasswordChange(e.target.value)}
-                          placeholder="Create a secure password"
-                          className={`w-full px-4 py-3 border ${
-                            errors.password ? "border-red-500" : "border-[var(--secondary-border-grey)]"
-                          } focus:border-[var(--primary-accent)] focus:outline-none transition-colors pr-12`}
-                          autoComplete="new-password"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--secondary-grey)] hover:text-[var(--primary-dark)]"
-                        >
-                          {showPassword ? "Hide" : "Show"}
-                        </button>
-                      </div>
-                      {passwordStrength && (
-                        <PasswordStrengthIndicator strength={passwordStrength} />
-                      )}
-                      {errors.password && (
-                        <p className="mt-2 text-sm text-red-500">{errors.password}</p>
-                      )}
-                      <p className="mt-2 text-xs text-[var(--secondary-grey)]">
-                        Must be at least 8 characters with uppercase, lowercase, and number
-                      </p>
-                    </div>
-
-                    <div className="mb-4">
-                      <label htmlFor="confirmPassword" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                        Confirm Password *
-                      </label>
-                      <div className="relative">
-                        <input
-                          type={showConfirmPassword ? "text" : "password"}
-                          id="confirmPassword"
-                          value={formData.confirmPassword}
-                          onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                          placeholder="Confirm your password"
-                          className={`w-full px-4 py-3 border ${
-                            errors.confirmPassword ? "border-red-500" : "border-[var(--secondary-border-grey)]"
-                          } focus:border-[var(--primary-accent)] focus:outline-none transition-colors pr-12`}
-                          autoComplete="new-password"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--secondary-grey)] hover:text-[var(--primary-dark)]"
-                        >
-                          {showConfirmPassword ? "Hide" : "Show"}
-                        </button>
-                      </div>
-                      {errors.confirmPassword && (
-                        <p className="mt-2 text-sm text-red-500">{errors.confirmPassword}</p>
-                      )}
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Optional Information Section */}
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-2 text-[var(--primary-navy)]">Tell Us About Yourself (Optional)</h2>
-                <p className="text-sm text-[var(--secondary-grey)] mb-4">
-                  This helps us understand our monitor community better
-                </p>
-
-                <div className="mb-4">
-                  <label htmlFor="organization" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                    Organization/Affiliation
-                  </label>
-                  <input
-                    type="text"
-                    id="organization"
-                    value={formData.organization}
-                    onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                    placeholder="e.g., Local environmental group"
-                    className="w-full px-4 py-3 border border-[var(--secondary-border-grey)] focus:border-[var(--primary-accent)] focus:outline-none transition-colors"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="experience" className="block text-sm font-semibold mb-2 text-[var(--primary-dark)]">
-                    Previous Experience with Water Monitoring
-                  </label>
-                  <textarea
-                    id="experience"
-                    value={formData.experience}
-                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                    placeholder="Tell us about any relevant experience..."
-                    rows={3}
-                    className="w-full px-4 py-3 border border-[var(--secondary-border-grey)] focus:border-[var(--primary-accent)] focus:outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Consent Section */}
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-[var(--primary-navy)]">Privacy & Notifications</h2>
-
-                <div className="mb-4">
-                  <label className="flex items-start cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={formData.gdprConsent}
-                      onChange={(e) => setFormData({ ...formData, gdprConsent: e.target.checked })}
-                      className="mt-1 mr-3"
-                    />
-                    <div className="text-sm">
-                      <span className="text-[var(--primary-dark)]">
-                        I agree to the{" "}
-                        <Link href="/terms" className="text-[var(--link-color)] hover:text-[var(--link-hover)]" target="_blank">
-                          Terms of Service
-                        </Link>{" "}
-                        and{" "}
-                        <Link href="/privacy" className="text-[var(--link-color)] hover:text-[var(--link-hover)]" target="_blank">
-                          Privacy Policy
-                        </Link>{" "}
-                        *
-                      </span>
-                    </div>
-                  </label>
-                  {errors.gdprConsent && (
-                    <p className="mt-2 text-sm text-red-500">{errors.gdprConsent}</p>
-                  )}
-                </div>
-
-                <div className="mb-4">
-                  <label className="flex items-start cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={formData.notificationPreference}
-                      onChange={(e) => setFormData({ ...formData, notificationPreference: e.target.checked })}
-                      className="mt-1 mr-3"
-                    />
-                    <div className="text-sm text-[var(--primary-dark)]">
-                      I want to receive email notifications when observations are needed (you can change this later)
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3 bg-[var(--button-primary)] text-[var(--button-text)] hover:bg-[var(--button-primary-hover)] transition-colors uppercase font-semibold disabled:opacity-50"
-              >
-                {loading ? "Creating Account..." : "Create Account"}
-              </button>
-            </form>
+              </form>
+            )}
           </div>
 
           {/* Help Text */}

@@ -29,14 +29,15 @@ export default function Home() {
     <div className="bg-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[var(--primary-accent-light)] to-[var(--primary-light)] text-white py-20 md:py-32">
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-[url('/Bactiquick-sampling.jpg')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Help Us Understand Our River
+              Get out and get involved
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90">
-              Join volunteer monitors observing water drainage patterns in the Dartington area
+              Join volunteer group who monitor the Bidwell Brook
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -46,10 +47,10 @@ export default function Home() {
                 Become a Monitor
               </Link>
               <Link 
-                href="/observations"
+                href="/studies/heavy-rain/"
                 className="inline-block px-8 py-4 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-colors uppercase font-semibold text-sm border border-white/30"
               >
-                View Observations
+                View latest study
               </Link>
             </div>
           </div>
@@ -148,7 +149,7 @@ export default function Home() {
             </div>
             <div className="text-center">
               <Link 
-                href="/locations"
+                href="/studies/heavy-rain/locations"
                 className="inline-block px-6 py-3 bg-[var(--button-primary)] text-[var(--button-text)] hover:bg-[var(--button-primary-hover)] transition-colors uppercase font-semibold text-sm"
               >
                 View Full Location Details
@@ -172,7 +173,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-[var(--primary-navy)]">Register</h3>
               <p className="text-[var(--primary-dark)] mb-2">Create your free account</p>
-              <p className="text-sm text-[var(--secondary-grey)]">Takes less than 2 minutes. We&apos;ll verify your email.</p>
+              <p className="text-sm text-[var(--secondary-grey)]">Takes less than a minute. Click the magic link in your email to get started.</p>
             </div>
 
             {/* Step 2 */}

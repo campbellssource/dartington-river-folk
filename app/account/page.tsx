@@ -7,7 +7,6 @@ export default function AccountPage() {
   const mockUser = {
     name: "John Smith",
     email: "john.smith@example.com",
-    organization: "Local Environmental Group",
     joinedDate: "2025-11-01",
     observationCount: 5,
     locationsVisited: 3,
@@ -78,12 +77,38 @@ export default function AccountPage() {
                   </div>
                   <div className="mt-4">
                     <Link
-                      href="/observations"
+                      href="/studies/heavy-rain/observations"
                       className="text-[var(--link-color)] hover:text-[var(--link-hover)] font-semibold text-sm"
                     >
                       View all observations →
                     </Link>
                   </div>
+                </div>
+              </div>
+
+              {/* Password Setup Section */}
+              <div className="bg-[var(--secondary-light-grey)] border-l-4 border-[var(--button-primary)] p-6">
+                <h2 className="text-xl font-semibold mb-3 text-[var(--primary-navy)]">
+                  💡 Set a Password for Faster Login
+                </h2>
+                <p className="text-[var(--primary-dark)] mb-4">
+                  You&apos;re currently logging in with magic links. Setting a password gives you more login options while keeping magic links available.
+                </p>
+                <div className="space-y-3">
+                  <p className="text-sm text-[var(--secondary-grey)]">
+                    <strong>Benefits:</strong>
+                  </p>
+                  <ul className="text-sm text-[var(--secondary-grey)] list-disc list-inside space-y-1">
+                    <li>Faster login when you&apos;re in a hurry</li>
+                    <li>No need to check your email every time</li>
+                    <li>Magic links still work if you forget your password</li>
+                  </ul>
+                  <button
+                    disabled
+                    className="mt-4 px-6 py-2 bg-[var(--button-primary)] text-[var(--button-text)] hover:bg-[var(--button-primary-hover)] transition-colors uppercase font-semibold text-sm disabled:opacity-50"
+                  >
+                    Set Password (Coming Soon)
+                  </button>
                 </div>
               </div>
 
@@ -104,12 +129,6 @@ export default function AccountPage() {
                       Email
                     </label>
                     <p className="text-[var(--primary-dark)]">{mockUser.email}</p>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-1 text-[var(--primary-dark)]">
-                      Organization
-                    </label>
-                    <p className="text-[var(--primary-dark)]">{mockUser.organization || "Not specified"}</p>
                   </div>
                   <div className="pt-4">
                     <button
@@ -138,10 +157,16 @@ export default function AccountPage() {
                     Make Observation
                   </Link>
                   <Link
-                    href="/locations"
+                    href="/studies/heavy-rain/locations"
                     className="block w-full py-2 px-4 bg-gray-200 text-[var(--primary-dark)] hover:bg-gray-300 transition-colors uppercase font-semibold text-sm text-center"
                   >
                     View Locations
+                  </Link>
+                  <Link
+                    href="/studies/heavy-rain/observations"
+                    className="block w-full py-2 px-4 bg-gray-200 text-[var(--primary-dark)] hover:bg-gray-300 transition-colors uppercase font-semibold text-sm text-center"
+                  >
+                    View Observations
                   </Link>
                 </div>
               </div>
